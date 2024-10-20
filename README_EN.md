@@ -10,7 +10,7 @@
 2. [Integration with External Systems](#integration-with-external-systems)
    - [Description of Work](#description-of-work)
    - [Acquired Skills and Competencies](#acquired-skills-and-competencies-1)
-3. [User Define Functions](#user-define-functions)
+3. [User Define Functions](#user-defined-functions)
     - [Task](#task)
     - [Functions](#functions)
     - [Acquired Skills and Competencies](#acquired-skills-and-competencies-2)
