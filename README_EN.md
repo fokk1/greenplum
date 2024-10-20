@@ -114,7 +114,7 @@ Through this integration work, I developed the following skills and competencies
 - **Familiarity with Data Access Protocols**: Learned how to implement and utilize PXF and gpfdist protocols, broadening my expertise in data access methods.
 - **Analytical Skills**: Enhanced my ability to analyze data structures and integration points, leading to more effective data retrieval and analysis strategies.
 
-## UDF - User Defined Functions
+## User Defined Functions
 
 ### Task
 
