@@ -6,10 +6,18 @@
    - [Goals](#goals)
    - [Database Structure](#database-structure)
    - [Key Features](#key-features)
-   - [Skills and Competencies Gained](#skills-and-competencies-gained)
+   - [Acquired Skills and Competencies](#acquired-skills-and-competencies)
 2. [Integration with External Systems](#integration-with-external-systems)
    - [Description of Work](#description-of-work)
-   - [Skills and Competencies Gained](#skills-and-competencies-gained-1)
+   - [Acquired Skills and Competencies](#acquired-skills-and-competencies-1)
+3. [User Define Functions](#user-define-functions)
+    - [Task](#task)
+    - [Functions](#functions)
+    - [Acquired Skills and Competencies](#acquired-skills-and-competencies-2)
+4. [Apache Airflow]()
+    - [Task](#task-1)
+    - [Description](#description)
+    - [Acquired Skills and Competencies](#acquired-skills-and-competencies-3)
 
 ## Distribution: Table Creation
 
@@ -73,7 +81,7 @@ The database follows a star schema structure with fact and dimension tables, org
 2. **Data Compression**:
    - Applied `zstd` compression to save storage space and optimize performance.
 
-### Skills and Competencies Gained
+### Acquired Skills and Competencies
 
 Through this project, I developed the following skills and competencies:
 
@@ -97,7 +105,7 @@ In this section, I describe the integration with external systems through the cr
    - **Outcome**: Created external tables that allow for efficient loading of data from these CSV files into Greenplum, improving the flexibility and accessibility of data sources for analysis.
    - **Description**: The gpfdist protocol allows Greenplum to read data from files served over HTTP, enabling efficient data loading from distributed file systems or cloud storage.
 
-### Skills and Competencies Gained
+### Acquired Skills and Competencies
 
 Through this integration work, I developed the following skills and competencies:
 
@@ -105,3 +113,58 @@ Through this integration work, I developed the following skills and competencies
 - **Proficiency in Greenplum**: Improved my skills in creating external tables and utilizing Greenplum features for effective data management.
 - **Familiarity with Data Access Protocols**: Learned how to implement and utilize PXF and gpfdist protocols, broadening my expertise in data access methods.
 - **Analytical Skills**: Enhanced my ability to analyze data structures and integration points, leading to more effective data retrieval and analysis strategies.
+
+## UDF - User Defined Functions
+
+### Task
+
+Organizing an efficient data loading process using the ELT approach. Managing data loading processes, including full dictionary updates, data mart loading, and partitioned data processing.
+
+### Functions
+
+**1. Function `f_load_full(p_table text, p_file_name text)`**
+- **Description:**
+  Full table overwrite using DELETE or TRUNCATE followed by inserting all records.
+- **Features:**
+  TRUNCATE + INSERT is used for fast table overwrite but locks the table with ACCESS EXCLUSIVE.
+
+**2. Function `f_load_mart(p_month varchar)`**
+- **Description:**
+  Loading data into a data mart for the specified month.
+
+**3. Function `f_load_simple_delta_partition(p_table text, p_partition_key text, p_start_date timestamp, p_end_date timestamp, p_pxf_table text, p_user_id text, p_pass text)`**
+- **Description:**
+  Replacing partitioned data on a daily, weekly, or monthly basis. This function is useful when working with large tables, which are typically partitioned by date.
+
+**4. Function `f_load_write_log(p_log_type text, p_log_message text, p_location text)`**
+- **Description:**
+  Writing logs for data loading.
+
+### Acquired Skills and Competencies
+
+- Developed and implemented UDFs to automate ETL processes.
+- Created functions to update data in partitioned tables.
+- Optimized data loading and processing using TRUNCATE + INSERT.
+
+## Apache Airflow
+
+### Task
+
+Automating ELT processes using Apache Airflow, including loading data into tables, partitioning, and creating data marts.
+
+### Description
+
+1. **DAG Initialization**:
+   - Configured DAG to automate ELT processes using Airflow.
+   - Defined processes for loading partitions, fully overwriting tables, and creating data marts.
+
+2. **Task Groups**:
+   - `load_delta_part_table`: Loading partitioned data for a specified period.
+   - `full_load`: Fully overwriting dictionary tables.
+   - `create_data_mart`: Loading data into a data mart for the specified month.
+
+### Acquired Skills and Competencies
+
+- Configured DAGs to automate ELT processes in Airflow.
+- Managed and monitored tasks related to data loading, data mart creation, and table updates.
+- Optimized sequential and parallel data processing, configured task dependencies, and monitored DAG execution.
